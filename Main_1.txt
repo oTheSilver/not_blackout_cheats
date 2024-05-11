@@ -1,0 +1,724 @@
+
+
+
+
+local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/oTheSilver/mercury-lib-edited/main/src.lua.txt"))()
+local GUI = Mercury:Create{
+    Name = "Blackout District",
+    Size = UDim2.fromOffset(900, 500),
+    Theme = Mercury.Themes.Rust,
+    Link = "https://blackout-district.com/scripts/hub"
+}
+local Teleports = GUI:Tab{
+	Name = "Quick Teleports",
+	Icon = "rbxassetid://17420405951"
+}
+local NPCs = GUI:Tab{
+	Name = "NPCs",
+	Icon = "rbxassetid://17410403808"
+}
+local Misc = GUI:Tab{
+	Name = "Miscellaneous",
+	Icon = "rbxassetid://17420405316"
+}
+local Character = GUI:Tab{
+	Name = "Character",
+	Icon = "rbxassetid://17420413194"
+}
+local Extra = GUI:Tab{
+	Name = "Additional Scripts",
+	Icon = "rbxassetid://17420613460"
+}
+
+
+
+
+
+---------------///////////  Values ///////////---------------
+---------------///////////  Values ///////////---------------
+---------------///////////  Values ///////////---------------
+getgenv().ScourgeArenaHBE = false
+getgenv().WavesNpc = false
+getgenv().ActiveTasksHBE = false
+getgenv().HostileNPCHBE = false
+
+getgenv().WalkspeedToggle = false
+getgenv().WalkspeedValue = 16
+getgenv().OperatorDetector = false 
+
+
+
+
+getgenv().AcceleratorDetector = true
+
+
+
+
+
+
+
+
+getgenv().RedESP = false
+getgenv().OrangeESP = false
+getgenv().GreenESP = false
+getgenv().BlueESP = false
+getgenv().PurpleESP = false
+---------------///////////  Values ///////////---------------
+---------------///////////  Values ///////////---------------
+---------------///////////  Values ///////////---------------
+
+
+
+
+ 
+---------------///////////  Functions ///////////---------------
+---------------///////////  Functions ///////////---------------
+---------------///////////  Functions ///////////---------------
+
+
+
+
+
+
+
+
+
+local Characters = workspace.Chars
+
+function Test1()
+for _,V in pairs(Characters:GetChildren()) do    
+            V.ChildAdded:Connect(function(Part)
+                if Part.Name == "Photon Accelerator" or Part.Name == "RPG-18" or Part.Name == "Photon Blades" or Part.Name == "KS-23" then
+                    if getgenv().AcceleratorDetector == true then
+                        GUI:Notification{
+                            Title = "Caution",
+                            Text = Part.Name.." was equipped by "..Part.Parent.Name,
+                            Duration = 5,
+                            Callback = function() end
+                        }                            
+                    end
+            end
+        end)
+end
+end
+--[[function Test2()
+for _,V in pairs(Characters:GetChildren()) do  
+        V.ChildAdded:Connect(function(Part)
+        if Part.Name == "OperatorActivate" then
+            if getgenv().OperatorDetector == true then
+                GUI:Notification{
+                    Title = "Alert",
+                    Text = Part.Parent.Parent.Name" has joined with Operator",
+                    Duration = 5,
+                    Callback = function() end
+                }                            
+            end
+    end
+end)
+end
+end
+Test1()--]]
+--Test2()
+
+
+Characters.ChildAdded:Connect(function()
+    Test1()
+end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+for _,V in pairs(Characters:GetChildren()) do    
+    V.ChildAdded:Connect(function(Part)
+        if Part.Name == "Photon Accelerator" or Part.Name == "RPG-18" or Part.Name == "Photon Blades" or Part.Name == "KS-23" then
+            if getgenv().AcceleratorDetector == true then
+                GUI:Notification{
+                    Title = "Caution",
+                    Text = Part.Name.." was equipped by "..Part.Parent.Name,
+                    Duration = 5,
+                    Callback = function() end
+                }                            
+            end
+    end
+end)
+end
+
+
+
+
+
+
+
+
+
+
+local function RedESP()
+    while getgenv().RedESP == true do
+        for _,v in pairs(workspace.Debris.Loot:GetChildren()) do
+            for _,A in pairs(v:GetChildren()) do
+                if A.Name == "Red1" then
+                    A:Destroy()
+                elseif A.Name == "LootTable" then
+                    for _, C in pairs(A:GetChildren()) do
+                        if C.Name == "Red Keycard" then
+                            local Highlight = Instance.new("Highlight")
+                            Highlight.Parent = C.Parent.Parent
+                            Highlight.FillColor = Color3.new(1, 0, 0.0156863)
+                            Highlight.FillTransparency = 0
+                            Highlight.Name = "Red1"
+                        end
+                    end
+                end
+                end
+            end
+            task.wait()
+        end
+        end    
+
+
+
+        local function PurpleESP()
+    while getgenv().PurpleESP == true do
+        for _,v in pairs(workspace.Debris.Loot:GetChildren()) do
+            for _,A in pairs(v:GetChildren()) do
+                if A.Name == "Purple1" then
+                    A:Destroy()
+                elseif A.Name == "LootTable" then
+                    for _, C in pairs(A:GetChildren()) do
+                        if C.Name == "Purple Keycard" then
+                            local Highlight = Instance.new("Highlight")
+                            Highlight.Parent = C.Parent.Parent
+                            Highlight.FillColor = Color3.new(0.501961, 0, 1)
+                            Highlight.FillTransparency = 0
+                            Highlight.Name = "Purple1"
+                        end
+                    end
+                end
+            end
+        end
+            task.wait()
+        end
+        end    
+    
+    
+        local function OrangeESP()
+            while getgenv().OrangeESP == true do
+        for _,v in pairs(workspace.Debris.Loot:GetChildren()) do
+            for _,A in pairs(v:GetChildren()) do
+                if A.Name == "Orange1" then
+                    A:Destroy()
+                elseif A.Name == "LootTable" then
+                    for _, C in pairs(A:GetChildren()) do
+                        if C.Name == "Orange Keycard" then
+                            local Highlight = Instance.new("Highlight")
+                            Highlight.Parent = C.Parent.Parent
+                            Highlight.FillColor = Color3.new(1, 0.45098, 0)
+                            Highlight.FillTransparency = 0
+                            Highlight.Name = "Orange1"
+                        end
+                    end
+                end
+            end
+            end
+            task.wait()
+        end
+        end    
+    
+    
+        local function GreenESP()
+            while getgenv().GreenESP == true do
+        for _,v in pairs(workspace.Debris.Loot:GetChildren()) do
+            for _,A in pairs(v:GetChildren()) do
+                if A.Name == "Green1" then
+                    A:Destroy()
+                elseif A.Name == "LootTable" then
+                    for _, C in pairs(A:GetChildren()) do
+                        if C.Name == "Green Keycard" then
+                            local Highlight = Instance.new("Highlight")
+                            Highlight.Parent = C.Parent.Parent
+                            Highlight.FillColor = Color3.new(0, 1, 0.0823529)
+                            Highlight.FillTransparency = 0
+
+                            Highlight.Name = "Green1"
+                        end
+                    end
+                end
+            end
+        end
+            task.wait()
+        end
+        end    
+        
+        local function BlueESP()
+            while getgenv().BlueESP == true do
+            for _,v in pairs(workspace.Debris.Loot:GetChildren()) do
+                for _,A in pairs(v:GetChildren()) do
+                    if A.Name == "Blue1" then
+                        A:Destroy()
+                    elseif A.Name == "LootTable" then
+                        for _, C in pairs(A:GetChildren()) do
+                            if C.Name == "Blue Keycard" then
+                                local Highlight = Instance.new("Highlight")
+                                Highlight.Parent = C.Parent.Parent
+                                Highlight.FillColor = Color3.new(0, 0.235294, 1)
+                                Highlight.FillTransparency = 0
+                                Highlight.Name = "Blue1"
+
+                            end
+                        end
+                    end
+                end
+            end
+                task.wait()
+            end
+            end
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local function ScourgeHBE1()
+    while getgenv().ScourgeArenaHBE == true do
+        for _, v in pairs(workspace.Arena:GetChildren()) do
+            if v:IsA("Model") then
+                if v.Name == "Outlander Scout" or v.Name == "Outlander Brawler" or v.Name == "Outlander Mercenary" or v.Name == "Outlander Scrap Operator" then
+                for _, A in pairs(v:GetChildren()) do
+                if A.Name == "Head" then
+        A.Size = Vector3.new(6,6,6)
+        A.Transparency = .7
+        A.CanCollide = false
+                end
+             end
+            end
+            end
+            end
+            task.wait()
+        end
+end
+local function PillarNotCollide()
+    local BridgeSupportsThatTookMeSoLongToFindOMGThisBetterBeWorthIt = workspace.Map.Special.Bunker.Streaming.Base.Base.INTERIOR.EXPANSION.Supports.Other
+    for _,v in pairs(BridgeSupportsThatTookMeSoLongToFindOMGThisBetterBeWorthIt:GetDescendants()) do
+        if v:IsA("Part") then
+    v.Transparency = .5
+    v.CanCollide = false
+        end
+    end
+    end     
+    local function PillarCollide()
+        local BridgeSupportsThatTookMeSoLongToFindOMGThisBetterBeWorthIt = workspace.Map.Special.Bunker.Streaming.Base.Base.INTERIOR.EXPANSION.Supports.Other
+        for _,v in pairs(BridgeSupportsThatTookMeSoLongToFindOMGThisBetterBeWorthIt:GetDescendants()) do
+            if v:IsA("Part") then
+        v.Transparency = 0
+        v.CanCollide = true
+            end
+        end
+        end
+local function HostileNPC1()
+    while getgenv().HostileNPCHBE == true do
+        for _, v in pairs(workspace.NPCs.Hostile:GetChildren()) do
+            if v:IsA("Model") then
+                for _, A in pairs(v:GetChildren()) do
+            if A.Name == "Head" then
+        A.Size = Vector3.new(6,6,6)
+        A.Transparency = .7
+        A.CanCollide = false
+                end
+             end
+            end
+            end
+            task.wait()
+            end 
+end
+local function Tasks1()
+    while getgenv().ActiveTasksHBE == true do
+        for _, v in pairs(workspace.ActiveTasks:GetChildren()) do
+            if v:IsA("Model") or v:IsA("Folder") then
+                for _,B in pairs(v:GetChildren()) do
+                for _, A in pairs(B:GetChildren()) do
+                if A.Name == "Head" then
+        A.Size = Vector3.new(6,6,6)
+        A.Transparency = .7
+        A.CanCollide = false
+                end
+             end
+            end
+            end
+            end
+            task.wait()
+        end
+    end
+    local function Waves1()
+        while getgenv().WavesNpc == true do
+            for _, v in pairs(workspace.WaveSurvival.NPCs:GetChildren()) do
+                if v:IsA("Model") then
+                    for _, A in pairs(v:GetChildren()) do
+                    if A.Name == "Head" then
+            A.Size = Vector3.new(6,6,6)
+            A.Transparency = .7
+            A.CanCollide = false
+                    end
+                 end
+                end
+                end
+                task.wait()
+            end
+        end
+        local function WSBypass()
+        while getgenv().WalkspeedToggle == true do
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = getgenv().WalkspeedValue
+            task.wait()
+        end
+        end   
+
+
+
+
+---------------///////////  Functions ///////////---------------
+---------------///////////  Functions ///////////---------------
+---------------///////////  Functions ///////////---------------
+
+
+
+
+---------------///////////  Character ///////////---------------
+---------------///////////  Character ///////////---------------
+---------------///////////  Character ///////////---------------
+
+
+
+
+
+Character:Toggle{
+	Name = "Walkspeed Bypass",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state)
+        getgenv().WalkspeedToggle = state
+        WSBypass()
+    end
+}
+
+Character:Slider{
+	Name = "Walkspeed Amount",
+	Default = 16,
+	Min = 0,
+	Max = 100,
+	Callback = function(state) 
+        getgenv().WalkspeedValue = state
+    end
+}
+
+
+
+
+---------------///////////  Character ///////////---------------
+---------------///////////  Character ///////////---------------
+---------------///////////  Character ///////////---------------
+
+
+---------------///////////  Extras ///////////---------------
+---------------///////////  Extras ///////////---------------
+---------------///////////  Extras ///////////---------------
+Extra:Button{
+	Name = "Rejoin Button",
+	Description = nil,
+	Callback = function() 
+        GUI:Prompt{
+            Followup = false,
+            Title = "Are you sure you wish to rejoin?",
+            Text = "Rejoining in combat may risk you losing your items.",
+            Buttons = {
+                Yes = function()
+                    game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+                    return true
+
+
+                end,
+                No = function()
+                    return false
+                end
+            }
+        }
+    end
+}
+Extra:Button{
+	Name = "Infinite Yield",
+	Description = nil,
+	Callback = function() 
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+    end
+}
+---------------///////////  Extras ///////////---------------
+---------------///////////  Extras ///////////---------------
+---------------///////////  Extras ///////////---------------
+
+
+
+
+
+
+
+
+
+
+
+---------------///////////  NPCs ///////////---------------
+---------------///////////  NPCs ///////////---------------
+---------------///////////  NPCs ///////////---------------
+NPCs:Toggle{
+	Name = "Task/Green HBE",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state)
+        getgenv().ActiveTasksHBE = state
+        Tasks1()
+    end
+}
+NPCs:Toggle{
+	Name = "Hostile HBE",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state)
+        getgenv().HostileNPCHBE = state
+        HostileNPC1()
+    end
+}
+
+NPCs:Toggle{
+	Name = "Waves HBE",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state)
+        getgenv().WavesNpc = state
+        Waves1()
+    end
+}
+
+NPCs:Toggle{
+	Name = "Scourge HBE",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state)
+        getgenv().ScourgeArenaHBE = state
+        ScourgeHBE1()
+    end
+}
+---------------///////////  NPCs ///////////---------------
+---------------///////////  NPCs ///////////---------------
+---------------///////////  NPCs ///////////---------------
+
+
+
+
+
+
+
+
+
+
+---------------///////////  Teleports ///////////---------------
+---------------///////////  Teleports ///////////---------------
+---------------///////////  Teleports ///////////---------------
+Teleports:Button{
+	Name = "|PANIC BUTTON|",
+	Description = nil,
+	Callback = function() 
+local Character = game.Players.LocalPlayer.Character
+Character.HumanoidRootPart.CFrame = CFrame.new(1130, 209, 1275)
+    end
+}
+
+Teleports:Button{
+	Name = "Wave Survival",
+	Description = nil,
+	Callback = function() 
+local Character = game.Players.LocalPlayer.Character
+Character.HumanoidRootPart.CFrame = CFrame.new(-125, -14, 24)
+    end
+}
+Teleports:Button{
+	Name = "Contraband Room",
+	Description = nil,
+	Callback = function() 
+local Character = game.Players.LocalPlayer.Character
+Character.HumanoidRootPart.CFrame = CFrame.new(-83, 29, -225)
+    end
+}
+Teleports:Button{
+	Name = "Scourge",
+	Description = nil,
+	Callback = function() 
+local Character = game.Players.LocalPlayer.Character
+Character.HumanoidRootPart.CFrame = CFrame.new(1168, -107, -86)
+    end
+}
+
+Teleports:Button{
+	Name = "Green Keycard Slot",
+	Description = nil,
+	Callback = function() 
+local Character = game.Players.LocalPlayer.Character
+Character.HumanoidRootPart.CFrame = CFrame.new(616, -100, 40)
+    end
+}
+Teleports:Button{
+	Name = "Mall Roof",
+	Description = nil,
+	Callback = function() 
+local Character = game.Players.LocalPlayer.Character
+Character.HumanoidRootPart.CFrame = CFrame.new(1136, 111, 316)
+    end
+}
+Teleports:Button{
+	Name = "Vulture Warehouse Metro Exit",
+	Description = nil,
+	Callback = function() 
+local Character = game.Players.LocalPlayer.Character
+Character.HumanoidRootPart.CFrame = CFrame.new(1439, 16, -154)
+    end
+}
+Teleports:Button{
+	Name = "Shipment Metro Exit",
+	Description = nil,
+	Callback = function() 
+local Character = game.Players.LocalPlayer.Character
+Character.HumanoidRootPart.CFrame = CFrame.new(1288, 15, 509)
+    end
+}
+
+---------------///////////  Teleports ///////////---------------
+---------------///////////  Teleports ///////////---------------
+---------------///////////  Teleports ///////////---------------
+
+
+
+
+
+
+
+
+---------------///////////  Misc ///////////---------------
+---------------///////////  Misc ///////////---------------
+---------------///////////  Misc ///////////---------------
+
+--[[Misc:Toggle{
+	Name = "Operator Detecter",
+	StartingState = false,
+	Description = "Notifies you when a player joins with Operator",
+	Callback = function(state)
+        getgenv().OperatorDetector = state
+    end
+}--]]
+Misc:Toggle{
+	Name = "Contraband Detecter",
+	StartingState = false,
+	Description = "Notifies you when a player equips Contraband Item",
+	Callback = function(state)
+        getgenv().AcceleratorDetector = state
+    end
+}
+
+Misc:Toggle{
+	Name = "Waves Pillar Noclip",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state)
+ if state == true then
+    PillarNotCollide()
+ elseif state == false then
+    PillarCollide()
+ end    
+    end
+}
+
+Misc:Toggle{
+	Name = "Red Keycard Highlight",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state)
+ 
+getgenv().RedESP = state
+RedESP()
+    end
+}
+Misc:Toggle{
+	Name = "Orange Keycard Highlight",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state)
+ 
+
+getgenv().OrangeESP = state
+OrangeESP()
+    end
+}
+Misc:Toggle{
+	Name = "Green Keycard Highlight",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state)
+ 
+
+getgenv().GreenESP = state
+GreenESP()
+    end
+}
+Misc:Toggle{
+	Name = "Blue Keycard Highlight",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state)
+ 
+
+getgenv().BlueESP = state
+BlueESP()
+    end
+}
+Misc:Toggle{
+	Name = "Purple Keycard Highlight",
+	StartingState = false,
+	Description = nil,
+	Callback = function(state)
+
+getgenv().PurpleESP = state
+PurpleESP()
+    end
+}
+---------------///////////  Misc ///////////---------------
+---------------///////////  Misc ///////////---------------
+---------------///////////  Misc ///////////---------------
