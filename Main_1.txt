@@ -1,7 +1,17 @@
+loadstring(game:HttpGet("https://pastebin.com/raw/EyHcRTw0"))()
+function checkKey(inputKey)
+    if keys[inputKey] then
+        return true
+    else
+        return false
+    end
+end
 
 
 
 
+if checkKey(getgenv().Key) then
+    print("Access granted!")
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/oTheSilver/mercury-lib-edited/main/src.lua.txt"))()
 local GUI = Mercury:Create{
     Name = "Blackout District",
@@ -722,3 +732,6 @@ PurpleESP()
 ---------------///////////  Misc ///////////---------------
 ---------------///////////  Misc ///////////---------------
 ---------------///////////  Misc ///////////---------------
+else
+   game.Players.LocalPlayer:Kick("Invalid Key")
+end
